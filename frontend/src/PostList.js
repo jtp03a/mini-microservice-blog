@@ -24,8 +24,9 @@ function PostList () {
         return <div className="card" key={post.id} style={{width: '30%', marginBottom: '20px'}}> 
             <div className="card-body">
                 <h3>{post.title}</h3>
-                <CommentCreate postId={post.id} />
                 <CommentList postId={post.id} />
+                <CommentCreate postId={post.id} />
+  
             </div>
 
         </div>

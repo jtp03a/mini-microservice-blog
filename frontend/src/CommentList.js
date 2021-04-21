@@ -18,15 +18,18 @@ function CommentList (props) {
     }
 
     const renderedComments = comments.map(comment => {
-        return <div>
+        return <li key={comment.id}>
             {comment.content}
-        </div>
+        </li>
     })
 
 
     return (
         <div>
+            <ul>
             {renderedComments}
+            </ul>
+  
         </div>
     )
 }
