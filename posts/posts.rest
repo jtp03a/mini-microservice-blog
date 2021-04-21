@@ -1,0 +1,8 @@
+# POST https://3000-scarlet-chameleon-k4jxf6qy.ws-us03.gitpod.io/posts HTTP/1.1
+# content-type: application/json
+
+# {
+#     "title": "Test2"
+# }
+
+GET https://3000-scarlet-chameleon-k4jxf6qy.ws-us03.gitpod.io/posts HTTP/1.1
