@@ -1,0 +1,8 @@
+# POST https://4001-scarlet-chameleon-k4jxf6qy.ws-us03.gitpod.io/posts/c53d3084/comments HTTP/1.1
+# content-type: application/json
+
+# {
+#     "content": "My second comment"
+# }
+
+GET https://4001-scarlet-chameleon-k4jxf6qy.ws-us03.gitpod.io/posts/c53d3084/comments HTTP/1.1

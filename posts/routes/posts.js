@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+
   const id = randomBytes(4).toString('hex');
 
   const { title } = req.body
