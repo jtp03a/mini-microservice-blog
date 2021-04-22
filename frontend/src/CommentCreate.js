@@ -7,7 +7,7 @@ function CommentCreate (props) {
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://4001-scarlet-chameleon-k4jxf6qy.ws-us03.gitpod.io/posts/' + props.postId + '/comments', { content })
+            await axios.post('https://4001-blush-nightingale-65egnev2.ws-us03.gitpod.io/posts/' + props.postId + '/comments', { content })
         } catch (err) {
             console.log(err)
         }

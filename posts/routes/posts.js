@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const { randomBytes } = require('crypto')
+const axios = require('axios')
 
 const posts = {}
 
@@ -9,7 +10,7 @@ router.get('/', (req, res) => {
   res.send(posts)
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
 
   const id = randomBytes(4).toString('hex');
 
@@ -18,7 +19,15 @@ router.post('/', (req, res) => {
       id, title
   }
 
+  await axios.post('https://4005-blush-nightingale-65egnev2.ws-us03.gitpod.io/events', {
+    type: 'PostCreate',
+    data: {
+      id, title
+    }
+  })
+
   res.status(201).send(posts[id])
+
 });
 
 module.exports = router;

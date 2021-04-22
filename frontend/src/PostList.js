@@ -13,7 +13,7 @@ function PostList () {
     
     const fetchPosts = async () => {
         try {
-            const { data } = await axios.get('https://4000-scarlet-chameleon-k4jxf6qy.ws-us03.gitpod.io/posts')
+            const { data } = await axios.get('https://4000-blush-nightingale-65egnev2.ws-us03.gitpod.io/posts')
             setPosts(data)
         } catch (err) {
             console.log(err)

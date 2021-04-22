@@ -2,9 +2,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const axios = require('axios')
 const cors = require('cors')
 
-const commentsRouter = require('./routes/comments')
+var indexRouter = require('./routes/index');
 const eventsRouter = require('./routes/events')
 
 var app = express();
@@ -16,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/posts', commentsRouter);
-app.use('/events', eventsRouter)
+app.use('/', indexRouter);
+app.use('/events', eventsRouter);
 
 module.exports = app;

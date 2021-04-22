@@ -7,7 +7,7 @@ function PostCreate () {
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://4000-scarlet-chameleon-k4jxf6qy.ws-us03.gitpod.io/posts', { title })
+            await axios.post('https://4000-blush-nightingale-65egnev2.ws-us03.gitpod.io/posts', { title })
         } catch (err) {
             console.log(err)
         }
