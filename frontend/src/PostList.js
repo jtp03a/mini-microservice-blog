@@ -13,7 +13,7 @@ function PostList () {
     
     const fetchPosts = async () => {
         try {
-            const { data } = await axios.get('https://4000-blush-nightingale-65egnev2.ws-us03.gitpod.io/posts')
+            const { data } = await axios.get('https://4002-blush-nightingale-65egnev2.ws-us03.gitpod.io/posts')
             setPosts(data)
         } catch (err) {
             console.log(err)
@@ -24,7 +24,7 @@ function PostList () {
         return <div className="card" key={post.id} style={{width: '30%', marginBottom: '20px'}}> 
             <div className="card-body">
                 <h3>{post.title}</h3>
-                <CommentList postId={post.id} />
+                <CommentList comments={post.comments} />
                 <CommentCreate postId={post.id} />
   
             </div>
