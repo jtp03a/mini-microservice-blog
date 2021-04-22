@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
   }
 
   await axios.post('https://4005-blush-nightingale-65egnev2.ws-us03.gitpod.io/events', {
-    type: 'PostCreate',
+    type: 'PostCreated',
     data: {
       id, title
     }

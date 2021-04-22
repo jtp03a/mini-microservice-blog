@@ -3,6 +3,30 @@ var router = express.Router();
 
 const posts = {}
 
+const handleEvent = (type, data) => {
+    
+    if (type === 'PostCreated') {
+        const { id, title } = data
+        posts[id] = { id, title, comments: [] }
+    } 
+
+    if (type === 'CommentCreated') {
+        const { id, content, postId, status} = data;
+        const post = posts[postId]
+        post.comments.push({ id, content, status })
+    }
+
+    if (type === 'CommentUpdated') {
+        const { id, content, postId, status} = data
+        post = posts[postId] 
+        const comment = post.comments.find(comment => {
+            return comment.id === id
+        })
+        comment.status = status
+        comment.content = content
+    }
+}
+
 router.get('/posts', (req, res) => {
     res.send(posts)
 });
@@ -10,16 +34,8 @@ router.get('/posts', (req, res) => {
 router.post('/events', (req, res) => {
     const { type, data } = req.body;
 
-    if (type === 'PostCreate') {
-        const { id, title } = data
-        posts[id] = { id, title, comments: [] }
-    } 
-
-    if (type === 'CommentCreate') {
-        const { id, content, postId} = data;
-        const post = posts[postId]
-        post.comments.push({ id, content })
-    }
+    handleEvent(type, data)
+    
     res.send({})
 });
 
