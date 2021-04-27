@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import { postAxios } from './axiosconfig.js';
 
 function PostCreate () {
     const [title, setTitle] = useState('')
@@ -7,7 +8,7 @@ function PostCreate () {
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://4000-blush-nightingale-65egnev2.ws-us03.gitpod.io/posts', { title })
+            await postAxios.post('/posts', { title })
         } catch (err) {
             console.log(err)
         }

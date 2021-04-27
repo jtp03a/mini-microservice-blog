@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 const { randomBytes } = require('crypto')
 const axios = require('axios')
+const axiosConfig = require('../../axiosconfig.js');
 
 const posts = {}
 
-/* GET home page. */
 router.get('/', (req, res) => {
   res.send(posts)
 });
@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
       id, title
   }
 
-  await axios.post('https://4005-blush-nightingale-65egnev2.ws-us03.gitpod.io/events', {
+  await axiosConfig.eventAxios.post('/events', {
     type: 'PostCreated',
     data: {
       id, title
