@@ -4,10 +4,16 @@ import axios from 'axios'
 function PostCreate () {
     const [title, setTitle] = useState('')
     
+    const authAxios = axios.create({
+        baseURL: ''
+      });
+    
+
+
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://4000-blush-nightingale-65egnev2.ws-us03.gitpod.io/posts', { title })
+            await authAxios.post('/posts', { title })
         } catch (err) {
             console.log(err)
         }

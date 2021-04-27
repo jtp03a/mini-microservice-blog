@@ -20,7 +20,7 @@ router.post('/posts/:id/comments', async (req, res) => {
 
   commentsByPostId[req.params.id] = comments
 
-  await axios.post('https://4005-blush-nightingale-65egnev2.ws-us03.gitpod.io/events', {
+  await axios.post('https://4005.cs.jakepeterson.dev/events', {
     type: 'CommentCreated',
     data: {
       id: commentId, 

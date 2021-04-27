@@ -9,10 +9,10 @@ router.post('/', (req, res) => {
 
     events.push(event)
 
-    axios.post('https://4000-blush-nightingale-65egnev2.ws-us03.gitpod.io/events', event);
-    axios.post('https://4001-blush-nightingale-65egnev2.ws-us03.gitpod.io/events', event);
-    axios.post('https://4002-blush-nightingale-65egnev2.ws-us03.gitpod.io/events', event);
-    axios.post('https://4003-blush-nightingale-65egnev2.ws-us03.gitpod.io/events', event);
+    axios.post('https://4000.cs.jakepeterson.dev/events', event);
+    axios.post('https://4001.cs.jakepeterson.dev/events', event);
+    axios.post('https://4002.cs.jakepeterson.dev/events', event);
+    axios.post('https://4003.cs.jakepeterson.dev/events', event);
 
     res.send({status: 'OK'})
 });

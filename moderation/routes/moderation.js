@@ -7,7 +7,7 @@ router.post('/events', async (req, res) => {
   if (type === 'CommentCreated') {
       const status = data.content.includes('orange') ? 'rejected' : 'approved'
 
-      await axios.post('https://4005-blush-nightingale-65egnev2.ws-us03.gitpod.io/events', {
+      await axios.post('https://4005.cs.jakepeterson.dev/events', {
         type: 'CommentModerated',
         data: {
             id: data.id,

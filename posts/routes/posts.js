@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-
+  console.log(req.body)
   const id = randomBytes(4).toString('hex');
 
   const { title } = req.body
@@ -19,12 +19,12 @@ router.post('/', async (req, res) => {
       id, title
   }
 
-  await axios.post('https://4005-blush-nightingale-65egnev2.ws-us03.gitpod.io/events', {
-    type: 'PostCreated',
-    data: {
-      id, title
-    }
-  })
+  // await axios.post('https://4005.cs.jakepeterson.dev/events', {
+  //   type: 'PostCreated',
+  //   data: {
+  //     id, title
+  //   }
+  // })
 
   res.status(201).send(posts[id])
 
