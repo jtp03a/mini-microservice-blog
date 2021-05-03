@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: posts-srv
+spec:
+  type: NodePort
+  # Tells the service which label to match with service
+  selector:
+    app: posts
+  ports: 
+    - name: posts
+      protocol: TCP
+      # port service is listening on, could be different
+      port: 4000
+      # the port that the application is listening on, i.e Express Server listening on 4000
+      targetPort: 4000

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: posts-depl
+spec:
+  replicas: 1
+  # Tells the deployment which pods to manage by looking for pods with this label
+  selector:
+    matchLabels:
+      app: posts
+  template:
+    # Assigns the label to pods this deployment creates
+    metadata:
+      labels:
+        app: posts
+    spec:
+      containers: 
+        - name: posts
+          image: registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-posts:latest
