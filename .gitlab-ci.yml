@@ -53,8 +53,8 @@ deploy-posts:
   script: 
     - cd ./infrastructure/k8s
     - microk8s kubectl apply -f posts-depl.yaml
-    - microk8s kubectl rollout restart deployment posts-depl.yaml
+    - microk8s kubectl rollout restart deployment posts-depl
     - microk8s kubectl apply -f event-bus-depl.yaml
-    - microk8s kubectl rollout restart deployment event-bus-depl.yaml
+    - microk8s kubectl rollout restart deployment event-bus-depl
 
 
