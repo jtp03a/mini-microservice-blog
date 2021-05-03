@@ -5,7 +5,8 @@ function PostCreate () {
     const [title, setTitle] = useState('')
     
     const authAxios = axios.create({
-        baseURL: ''
+        baseURL: 'https://4000.jakepeterson.dev',
+        withCredentials: true
       });
     
 
