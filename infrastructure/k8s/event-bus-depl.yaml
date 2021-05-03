@@ -1,38 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: posts-depl
+  name: event-bus-depl
 spec:
   replicas: 1
   # Tells the deployment which pods to manage by looking for pods with this label
   selector:
     matchLabels:
-      app: posts
+      app: event-bus
   template:
     # Assigns the label to pods this deployment creates
     metadata:
       labels:
-        app: posts
+        app: event-bus
     spec:
       containers: 
-        - name: posts
-          image: registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-posts:latest
+        - name: event-bus
+          image: registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-eventbus:latest
       imagePullSecrets:
         - name: privreg
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: posts-srv
+  name: event-bus-srv
 spec:
   type: ClusterIP
   # Tells the service which label to match with service
   selector:
-    app: posts
+    app: event-bus
   ports: 
     - name: posts
       protocol: TCP
       # port service is listening on, could be different
-      port: 4000
+      port: 4005
       # the port that the application is listening on, i.e Express Server listening on 4000
-      targetPort: 4000
+      targetPort: 4005
