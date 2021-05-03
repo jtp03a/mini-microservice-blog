@@ -6,12 +6,12 @@ services:
 # before_script:
 #   - echo ${DOCKER_PASSWORD} | docker login registry.jakepeterson.dev --username ${DOCKER_USER} --password-stdin
 
-# build-posts:
-#   stage: build
-#   script: 
-#     - cd ./posts
-#     - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-posts:latest .
-#     - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-posts:latest
+build-posts:
+  stage: build
+  script: 
+    - cd ./posts
+    - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-posts:latest .
+    - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-posts:latest
 
 # build-comments:
 #   stage: build
@@ -20,12 +20,12 @@ services:
 #     - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-comments:latest .
 #     - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-comments:latest
 
-# build-eventbus:
-#   stage: build
-#   script: 
-#     - cd ./event-bus
-#     - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-eventbus:latest .
-#     - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-eventbus:latest
+build-eventbus:
+  stage: build
+  script: 
+    - cd ./event-bus
+    - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-eventbus:latest .
+    - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-eventbus:latest
 
 # build-frontend:
 #   stage: build
@@ -52,9 +52,9 @@ deploy-posts:
   stage: deploy
   script: 
     - cd ./infrastructure/k8s
-    - microk8s kubectl apply -f posts-np-srv.yaml
-    - microk8s kubectl delete deployment posts-depl
     - microk8s kubectl apply -f posts-depl.yaml
+    - microk8s kubectl rollout restart deployment posts-depl.yaml
     - microk8s kubectl apply -f event-bus-depl.yaml
+    - microk8s kubectl rollout restart deployment event-bus-depl.yaml
 
 

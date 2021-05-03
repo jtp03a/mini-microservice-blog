@@ -19,12 +19,12 @@ router.post('/', async (req, res) => {
       id, title
   }
 
-  // await axios.post('https://4005.cs.jakepeterson.dev/events', {
-  //   type: 'PostCreated',
-  //   data: {
-  //     id, title
-  //   }
-  // })
+  await axios.post('http://event-bus-srv:4005/events', {
+    type: 'PostCreated',
+    data: {
+      id, title
+    }
+  })
 
   res.status(201).send(posts[id])
 
