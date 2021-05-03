@@ -52,7 +52,7 @@ deploy-posts:
   stage: deploy
   script: 
     - cd ./infrastructure/k8s
-    - microk8s kubectl apply -f posts-np-serv.yaml
+    - microk8s kubectl apply -f posts-np-srv.yaml
     - microk8s kubectl apply -f posts-depl.yaml
 
 
