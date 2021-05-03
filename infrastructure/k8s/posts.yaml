@@ -5,4 +5,6 @@ metadata:
 spec:
   containers:
     - name: posts
-      image: jtp03a/posts:0.0.1
+      image: registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-posts:latest
+  imagePullSecrets:
+    - name: privreg
