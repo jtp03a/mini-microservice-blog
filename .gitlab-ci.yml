@@ -53,6 +53,7 @@ deploy-posts:
   script: 
     - cd ./infrastructure/k8s
     - microk8s kubectl apply -f posts-np-srv.yaml
+    - microk8s kubectl delete deployment posts-depl
     - microk8s kubectl apply -f posts-depl.yaml
 
 

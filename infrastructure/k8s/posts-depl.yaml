@@ -17,3 +17,5 @@ spec:
       containers: 
         - name: posts
           image: registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-posts:latest
+      imagePullSecrets:
+        - name: privreg
