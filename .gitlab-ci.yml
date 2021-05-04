@@ -53,16 +53,16 @@ deploy:
   script: 
     - cd ./infrastructure/k8s
     - microk8s kubectl apply -f posts-depl.yaml
-    - microk8s kubectl rollout restart deployment posts-depl
+    - microk8s kubectl rollout restart deployment posts-depl -n mms-blog
     - microk8s kubectl apply -f event-bus-depl.yaml
-    - microk8s kubectl rollout restart deployment event-bus-depl
+    - microk8s kubectl rollout restart deployment event-bus-depl -n mms-blog
     - microk8s kubectl apply -f comments-depl.yaml
-    - microk8s kubectl rollout restart deployment comments-depl
+    - microk8s kubectl rollout restart deployment comments-depl -n mms-blog
     - microk8s kubectl apply -f moderation-depl.yaml
-    - microk8s kubectl rollout restart deployment moderation-depl
+    - microk8s kubectl rollout restart deployment moderation-depl -n mms-blog
     - microk8s kubectl apply -f query-depl.yaml
-    - microk8s kubectl rollout restart deployment query-depl
+    - microk8s kubectl rollout restart deployment query-depl -n mms-blog
     - microk8s kubectl apply -f frontend-depl.yaml
-    - microk8s kubectl rollout restart deployment frontend-depl
+    - microk8s kubectl rollout restart deployment frontend-depl -n mms-blog
 
 
