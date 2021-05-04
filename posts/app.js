@@ -9,13 +9,7 @@ const eventsRouter = require('./routes/events')
 
 var app = express();
 
-const corsOptions ={
-    origin:'https://3000.cs.jakepeterson.dev', 
-    credentials:true,  
-    optionSuccessStatus:200
-}
-
-app.use(cors(corsOptions))
+app.use(cors())
 
 app.use(logger('dev'));
 app.use(express.json());

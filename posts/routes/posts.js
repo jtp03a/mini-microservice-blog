@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 const { randomBytes } = require('crypto')
 const axios = require('axios')
-const axiosConfig = require('../../axiosconfig.js');
 
 const posts = {}
 
@@ -11,7 +10,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  console.log(req.body)
   const id = randomBytes(4).toString('hex');
 
   const { title } = req.body
