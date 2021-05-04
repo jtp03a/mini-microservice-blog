@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: moderation-depl
+  namespace: mms-blog
 spec:
   replicas: 1
   # Tells the deployment which pods to manage by looking for pods with this label
@@ -24,6 +25,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: moderation-srv
+  namespace: mms-blog
 spec:
   type: ClusterIP
   # Tells the service which label to match with service
