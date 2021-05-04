@@ -6,47 +6,47 @@ services:
 before_script:
   - echo ${DOCKER_PASSWORD} | docker login registry.jakepeterson.dev --username ${DOCKER_USER} --password-stdin
 
-# build-posts:
-#   stage: build
-#   script: 
-#     - cd ./posts
-#     - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-posts:latest .
-#     - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-posts:latest
+build-posts:
+  stage: build
+  script: 
+    - cd ./posts
+    - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-posts:latest .
+    - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-posts:latest
 
-# build-comments:
-#   stage: build
-#   script: 
-#     - cd ./comments
-#     - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-comments:latest .
-#     - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-comments:latest
+build-comments:
+  stage: build
+  script: 
+    - cd ./comments
+    - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-comments:latest .
+    - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-comments:latest
 
-# build-eventbus:
-#   stage: build
-#   script: 
-#     - cd ./event-bus
-#     - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-eventbus:latest .
-#     - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-eventbus:latest
+build-eventbus:
+  stage: build
+  script: 
+    - cd ./event-bus
+    - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-eventbus:latest .
+    - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-eventbus:latest
 
-# build-frontend:
-#   stage: build
-#   script: 
-#     - cd ./frontend
-#     - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-frontend:latest .
-#     - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-frontend:latest
+build-frontend:
+  stage: build
+  script: 
+    - cd ./frontend
+    - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-frontend:latest .
+    - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-frontend:latest
 
-# build-moderation:
-#   stage: build
-#   script: 
-#     - cd ./moderation
-#     - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-moderation:latest .
-#     - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-moderation:latest
+build-moderation:
+  stage: build
+  script: 
+    - cd ./moderation
+    - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-moderation:latest .
+    - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-moderation:latest
 
-# build-query:
-#   stage: build
-#   script: 
-#     - cd ./query
-#     - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-query:latest .
-#     - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-query:latest
+build-query:
+  stage: build
+  script: 
+    - cd ./query
+    - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-query:latest .
+    - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-query:latest
 
 deploy:
   stage: deploy
