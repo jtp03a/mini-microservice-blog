@@ -60,7 +60,7 @@ deploy:
     # - microk8s kubectl rollout restart deployment comments-depl
     - microk8s kubectl apply -f moderation-depl.yaml
     # - microk8s kubectl rollout restart deployment moderation-depl
-    - microk8s kubectl apply -f query-depl.yaml
+    # - microk8s kubectl apply -f query-depl.yaml
     # - microk8s kubectl rollout restart deployment query-depl
     - microk8s kubectl apply -f frontend-depl.yaml
     # - microk8s kubectl rollout restart deployment frontend-depl
