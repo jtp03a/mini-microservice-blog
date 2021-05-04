@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 const { randomBytes } = require('crypto')
 const axios = require('axios')
+const axiosConfig = require('../../axiosconfig.js');
 
 const posts = {}
 
-/* GET home page. */
 router.get('/', (req, res) => {
   res.send(posts)
 });

@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import { postAxios } from './axiosconfig.js';
 
 function PostCreate () {
     const [title, setTitle] = useState('')

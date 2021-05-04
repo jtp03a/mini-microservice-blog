@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const { randomBytes } = require('crypto')
 const axios = require('axios')
+const axiosConfig = require('../../axiosconfig.js');
 
 const commentsByPostId = {}
 
@@ -48,7 +49,7 @@ router.post('/events', async (req, res) => {
 
       comment.status = status
 
-      await axios.post('https://4005-blush-nightingale-65egnev2.ws-us03.gitpod.io/events', {
+      await axiosConfig.eventAxios.post('/events', {
         type: 'CommentUpdated',
         data: {
           id, 
