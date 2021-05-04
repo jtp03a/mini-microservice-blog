@@ -3,8 +3,8 @@ image: docker:latest
 services:
   - docker:dind
 
-# before_script:
-#   - echo ${DOCKER_PASSWORD} | docker login registry.jakepeterson.dev --username ${DOCKER_USER} --password-stdin
+before_script:
+  - echo ${DOCKER_PASSWORD} | docker login registry.jakepeterson.dev --username ${DOCKER_USER} --password-stdin
 
 build-posts:
   stage: build
@@ -27,12 +27,12 @@ build-eventbus:
     - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-eventbus:latest .
     - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-eventbus:latest
 
-# build-frontend:
-#   stage: build
-#   script: 
-#     - cd ./frontend
-#     - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-frontend:latest .
-#     - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-frontend:latest
+build-frontend:
+  stage: build
+  script: 
+    - cd ./frontend
+    - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-frontend:latest .
+    - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-frontend:latest
 
 build-moderation:
   stage: build
@@ -61,6 +61,6 @@ deploy:
     - microk8s kubectl apply -f moderation-depl.yaml -n mms-blog
     - microk8s kubectl rollout restart deployment moderation-depl -n mms-blog
     - microk8s kubectl apply -f query-depl.yaml -n mms-blog
-    - microk8s kubectl rollout restart deployment query-depl -n mms-blog
+    - microk8s kubectl rollout restart deployment query-depl-n mms-blog
 
 
