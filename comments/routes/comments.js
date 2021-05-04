@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 const { randomBytes } = require('crypto')
 const axios = require('axios')
-const axiosConfig = require('../../axiosconfig.js');
 
 const commentsByPostId = {}
 
@@ -21,7 +20,7 @@ router.post('/posts/:id/comments', async (req, res) => {
 
   commentsByPostId[req.params.id] = comments
 
-  await axios.post('https://4005.cs.jakepeterson.dev/events', {
+  await axios.post('http://event-bus-srv:4005/events', {
     type: 'CommentCreated',
     data: {
       id: commentId, 
@@ -49,7 +48,7 @@ router.post('/events', async (req, res) => {
 
       comment.status = status
 
-      await axiosConfig.eventAxios.post('/events', {
+      await axios.post('http://event-bus-srv:4005/events', {
         type: 'CommentUpdated',
         data: {
           id, 

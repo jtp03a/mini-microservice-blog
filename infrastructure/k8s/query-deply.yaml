@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: query-depl
+spec:
+  replicas: 1
+  # Tells the deployment which pods to manage by looking for pods with this label
+  selector:
+    matchLabels:
+      app: query
+  template:
+    # Assigns the label to pods this deployment creates
+    metadata:
+      labels:
+        app: query
+    spec:
+      containers: 
+        - name: query
+          image: registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-query:latest
+      imagePullSecrets:
+        - name: privreg
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: query-srv
+spec:
+  type: ClusterIP
+  # Tells the service which label to match with service
+  selector:
+    app: query
+  ports: 
+    - name: query
+      protocol: TCP
+      # port service is listening on, could be different
+      port: 4002
+      # the port that the application is listening on, i.e Express Server listening on 4000
+      targetPort: 4002

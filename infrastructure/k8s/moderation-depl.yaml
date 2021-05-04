@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moderation-depl
+spec:
+  replicas: 1
+  # Tells the deployment which pods to manage by looking for pods with this label
+  selector:
+    matchLabels:
+      app: moderation
+  template:
+    # Assigns the label to pods this deployment creates
+    metadata:
+      labels:
+        app: moderation
+    spec:
+      containers: 
+        - name: moderation
+          image: registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-moderation:latest
+      imagePullSecrets:
+        - name: privreg
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: moderation-srv
+spec:
+  type: ClusterIP
+  # Tells the service which label to match with service
+  selector:
+    app: moderation
+  ports: 
+    - name: moderation
+      protocol: TCP
+      # port service is listening on, could be different
+      port: 4003
+      # the port that the application is listening on, i.e Express Server listening on 4000
+      targetPort: 4003

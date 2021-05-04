@@ -10,9 +10,9 @@ router.post('/', (req, res) => {
     events.push(event)
 
     axios.post('http://posts-srv:4000/events', event);
-    axios.post('https://4001.cs.jakepeterson.dev/events', event);
-    axios.post('https://4002.cs.jakepeterson.dev/events', event);
-    axios.post('https://4003.cs.jakepeterson.dev/events', event);
+    axios.post('http://comments-srv:4001/events', event);
+    axios.post('http://query-srv:4002/events', event);
+    axios.post('http://moderation-srv:4003/events', event);
 
     res.send({status: 'OK'})
 });

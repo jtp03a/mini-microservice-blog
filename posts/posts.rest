@@ -1,8 +1,8 @@
-# POST https://4000-scarlet-chameleon-k4jxf6qy.ws-us03.gitpod.io/posts HTTP/1.1
-# content-type: application/json
+POST http://posts-srv:4000/posts HTTP/1.1
+content-type: application/json
 
-# {
-#     "title": "My First Post"
-# }
-
-GET https://4000-scarlet-chameleon-k4jxf6qy.ws-us03.gitpod.io/posts HTTP/1.1
+{
+    "title": "My First Post"
+}
+###
+GET http://posts-srv:4000/posts HTTP/1.1

@@ -13,12 +13,12 @@ build-posts:
     - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-posts:latest .
     - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-posts:latest
 
-# build-comments:
-#   stage: build
-#   script: 
-#     - cd ./comments
-#     - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-comments:latest .
-#     - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-comments:latest
+build-comments:
+  stage: build
+  script: 
+    - cd ./comments
+    - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-comments:latest .
+    - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-comments:latest
 
 build-eventbus:
   stage: build
@@ -34,27 +34,33 @@ build-eventbus:
 #     - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-frontend:latest .
 #     - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-frontend:latest
 
-# build-moderation:
-#   stage: build
-#   script: 
-#     - cd ./moderation
-#     - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-moderation:latest .
-#     - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-moderation:latest
+build-moderation:
+  stage: build
+  script: 
+    - cd ./moderation
+    - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-moderation:latest .
+    - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-moderation:latest
 
-# build-query:
-#   stage: build
-#   script: 
-#     - cd ./query
-#     - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-query:latest .
-#     - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-query:latest
+build-query:
+  stage: build
+  script: 
+    - cd ./query
+    - docker build -t registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-query:latest .
+    - docker push registry.jakepeterson.dev/jpeterson/mini-microservice-blog/ms-query:latest
 
-deploy-posts:
+deploy:
   stage: deploy
   script: 
     - cd ./infrastructure/k8s
-    - microk8s kubectl apply -f posts-depl.yaml
-    - microk8s kubectl rollout restart deployment posts-depl
-    - microk8s kubectl apply -f event-bus-depl.yaml
-    - microk8s kubectl rollout restart deployment event-bus-depl
+    - microk8s kubectl apply -f posts-depl.yaml -n mms-blog
+    - microk8s kubectl rollout restart deployment posts-depl -n mms-blog
+    - microk8s kubectl apply -f event-bus-depl.yaml -n mms-blog
+    - microk8s kubectl rollout restart deployment event-bus-depl -n mms-blog
+    - microk8s kubectl apply -f comments-depl.yaml -n mms-blog
+    - microk8s kubectl rollout restart deployment comments-depl -n mms-blog
+    - microk8s kubectl apply -f moderation-depl.yaml -n mms-blog
+    - microk8s kubectl rollout restart deployment moderation-depl -n mms-blog
+    - microk8s kubectl apply -f query-depl.yaml -n mms-blog
+    - microk8s kubectl rollout restart deployment query-depl -n mms-blog
 
 
