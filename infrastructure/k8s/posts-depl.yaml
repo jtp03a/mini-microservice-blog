@@ -33,6 +33,6 @@ spec:
     - name: posts
       protocol: TCP
       # port service is listening on, could be different
-      port: 4000
+      port: 6000
       # the port that the application is listening on, i.e Express Server listening on 4000
-      targetPort: 4000
+      targetPort: 6000

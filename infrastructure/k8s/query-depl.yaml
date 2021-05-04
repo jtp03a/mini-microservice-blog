@@ -33,6 +33,6 @@ spec:
     - name: query
       protocol: TCP
       # port service is listening on, could be different
-      port: 4002
+      port: 6002
       # the port that the application is listening on, i.e Express Server listening on 4000
-      targetPort: 4002
+      targetPort: 6002

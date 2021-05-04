@@ -33,6 +33,6 @@ spec:
     - name: comments
       protocol: TCP
       # port service is listening on, could be different
-      port: 4001
+      port: 6001
       # the port that the application is listening on, i.e Express Server listening on 4000
-      targetPort: 4001
+      targetPort: 6001
