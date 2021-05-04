@@ -13,7 +13,7 @@ function PostList () {
     
     const fetchPosts = async () => {
         try {
-            const { data } = await axios.get('https://4002.cs.jakepeterson.dev/posts')
+            const { data } = await axios.get('http://query-srv:4002/posts')
             setPosts(data)
         } catch (err) {
             console.log(err)

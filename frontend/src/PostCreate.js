@@ -1,21 +1,13 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import { postAxios } from './axiosconfig.js';
 
 function PostCreate () {
     const [title, setTitle] = useState('')
     
-    const authAxios = axios.create({
-        baseURL: 'https://4000.jakepeterson.dev',
-        withCredentials: true
-      });
-    
-
-
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
-            await authAxios.post('/posts', { title })
+            await axios.post('http://posts-srv:4001/posts/', { title })
         } catch (err) {
             console.log(err)
         }
