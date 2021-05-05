@@ -5,7 +5,9 @@ import CommentCreate from './CommentCreate'
 
 
 function PostList () {
-    const [posts, setPosts] = useState({})
+    const [posts, setPosts] = useState({
+        comments: []
+    })
 
     useEffect(() => {
         fetchPosts()
