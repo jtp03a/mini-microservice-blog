@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
   res.send(posts)
 });
 
-router.post('/', async (req, res) => {
+router.post('/create', async (req, res) => {
   const id = randomBytes(4).toString('hex');
 
   const { title } = req.body
