@@ -1,4 +1,4 @@
-POST http://posts-srv:4000/posts HTTP/1.1
+POST https://mms-blog.jakepeterson.dev/createpost HTTP/1.1
 content-type: application/json
 
 {
