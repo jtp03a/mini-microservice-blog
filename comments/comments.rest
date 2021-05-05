@@ -1,8 +1,8 @@
-POST http://comments-srv:4001/posts/bf77125a/comments HTTP/1.1
+POST https://mms-blog.jakepeterson.dev/posts/202adb71/comments HTTP/1.1
 content-type: application/json
 
 {
-    "content": "My second comment"
+    "content": "My orange comment"
 }
 ###
 GET https://4001-scarlet-chameleon-k4jxf6qy.ws-us03.gitpod.io/posts/c53d3084/comments HTTP/1.1
