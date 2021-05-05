@@ -7,7 +7,7 @@ function PostCreate () {
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://posts-srv:4001/posts/', { title })
+            await axios.post('https://mms-blog.jakepeterson.dev/posts', { title })
         } catch (err) {
             console.log(err)
         }
