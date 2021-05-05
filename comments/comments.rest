@@ -1,4 +1,4 @@
-POST https://mms-blog.jakepeterson.dev/posts/202adb71/comments HTTP/1.1
+POST https://mms-blog.jakepeterson.dev/posts/0de77e6d/comments HTTP/1.1
 content-type: application/json
 
 {
